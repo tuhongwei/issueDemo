@@ -1,2 +1,7 @@
-# issueDemo
-用来重现问题的demo
+
+#安装所有包
+#npm install
+
+# 运行 gulp dev
+
+ 
