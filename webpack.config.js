@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var htmlMinifier = require('html-minifier').minify;
 
 module.exports = {
 	resolve: {
@@ -22,11 +21,10 @@ module.exports = {
         loaders: [
             { test: /\.less$/, loader: "style-loader!css-loader!less-loader"},
             { test: /\.css$/, loader: "style-loader!css-loader"},
-            { test: /\.(jpg|png|gif|svg)$/, loader: "file-loader?limit=70000"},
+            { test: /\.(jpg|png|gif|svg)$/, loader: "file-loader"},
             { test: /\.art$/, loader: "art-template-loader", options: {
                 htmlResourceRoot: path.join(__dirname, 'img'),
                 root: path.resolve(__dirname),
-                htmlMinifier: htmlMinifier,
                 htmlMinifierOptions: {
                     removeComments: true,
                     collapseWhitespace: true,
@@ -37,8 +35,8 @@ module.exports = {
         ]
     },
     plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'common'
-		})
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'common'
+        // })
     ]
 };
