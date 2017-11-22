@@ -1,13 +1,14 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 
-var webpack = require('gulp-webpack');
+var webpackStream = require('webpack-stream');
+var webpack = require("webpack");
 // 引用webpack配置文件
 var webpackConfig = require('./webpack.config.js');
 
 gulp.task("jsbuild", function(){
 	return gulp.src("./js/**/*.js")
-		.pipe(webpack(webpackConfig))
+		.pipe(webpackStream(webpackConfig, webpack))
 		.pipe(gulp.dest("./build/js"));
 });
 
